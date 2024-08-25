@@ -1,0 +1,31 @@
+### `git restore --staged <filename>`
+
+- **Purpose:** Used to unstage a file, meaning it removes changes from the staging area but keeps them in the working directory.
+- **Effect:**
+  - The file's changes remain in the working directory.
+  - The file is removed from the staging area, so the changes won't be included in the next commit.
+  - It essentially reverts the effect of `git add <filename>`.
+- **Use Case:** If you've added a file to the staging area with `git add` but want to remove it from the staging area without losing the changes you made to the file.
+
+```bash
+git restore --staged <filename>
+```
+
+### `git rm --cached <filename>`
+
+- **Purpose:** Used to remove a file from the staging area and stop tracking it in the repository, while keeping the file in the working directory.
+- **Effect:**
+  - The file is removed from the staging area.
+  - The file is also removed from version control (i.e., it will no longer be tracked by Git in future commits).
+  - The file itself is not deleted from the working directory; it just becomes an untracked file.
+- **Use Case:** When you want to remove a file from version control (stop tracking it) but keep the file in your working directory.
+
+```bash
+git rm --cached <filename>
+```
+
+### Key Differences
+
+- **Tracking:** `git rm --cached` stops Git from tracking the file entirely, whereas `git restore --staged` keeps the file tracked but unstaged.
+- **File State:** After `git rm --cached`, the file becomes untracked; after `git restore --staged`, the file remains tracked but is not staged for commit.
+- **Use Case:** Use `git restore --staged` to simply unstage a file but continue tracking it. Use `git rm --cached` to untrack a file without deleting it from your working directory.
